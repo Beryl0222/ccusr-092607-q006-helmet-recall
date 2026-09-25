@@ -1,0 +1,5 @@
+[project]
+name = "helmet-recall"
+version = "0.1.0"
+description = "头部护具召回协同链领域契约"
+requires-python = ">=3.11"

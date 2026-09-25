@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "头部护具召回协同链领域事件",
+  "type": "object",
+  "required": [
+    "event_id",
+    "event_type",
+    "aggregate_type",
+    "aggregate_id",
+    "occurred_at",
+    "version",
+    "payload"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "MODEL_REGISTERED",
+        "CERTIFICATE_VERIFIED",
+        "TEST_RESULT_RECORDED",
+        "LOT_FROZEN",
+        "UNIT_DISPOSED"
+      ]
+    },
+    "aggregate_type": {
+      "type": "string",
+      "enum": [
+        "helmet_model",
+        "certification_record",
+        "product_lot",
+        "recall_campaign"
+      ]
+    },
+    "aggregate_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "payload": {
+      "type": "object"
+    }
+  },
+  "payload_required_by_event": {
+    "CERTIFICATE_VERIFIED": [
+      "certificate_ref",
+      "valid_until"
+    ],
+    "LOT_FROZEN": [
+      "affected_units",
+      "risk_reason"
+    ],
+    "UNIT_DISPOSED": [
+      "unit_ref",
+      "disposition"
+    ]
+  },
+  "additionalProperties": false
+}

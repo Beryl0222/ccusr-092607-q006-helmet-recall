@@ -1,0 +1,9 @@
+{
+  "event_id": "092601-006-sample-001",
+  "event_type": "MODEL_REGISTERED",
+  "aggregate_type": "helmet_model",
+  "aggregate_id": "helmet_recall-001",
+  "occurred_at": "2026-09-25T10:00:00+08:00",
+  "version": 1,
+  "payload": {}
+}
