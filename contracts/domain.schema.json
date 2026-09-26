@@ -19,20 +19,50 @@
     "event_type": {
       "type": "string",
       "enum": [
+        "PRODUCER_REGISTERED",
         "MODEL_REGISTERED",
+        "CERTIFICATE_SUBMITTED",
         "CERTIFICATE_VERIFIED",
+        "CERTIFICATE_EXPIRED",
         "TEST_RESULT_RECORDED",
+        "LOT_REGISTERED",
+        "LOT_SPLIT",
+        "LOT_MERGED",
+        "MATERIAL_SUBMITTED",
+        "SHOP_LINKED",
+        "INVENTORY_MOVED",
+        "SALE_RECORDED",
+        "RETURN_RECORDED",
+        "MESSAGE_QUARANTINED",
+        "RISK_ASSESSED",
         "LOT_FROZEN",
-        "UNIT_DISPOSED"
+        "LOT_UNFROZEN",
+        "RECALL_LAUNCHED",
+        "CAMPAIGN_APPROVED",
+        "STOP_SALE_ENFORCED",
+        "SCOPE_ADJUSTED",
+        "NOTIFICATION_SENT",
+        "CONSUMER_RESPONDED",
+        "ESCALATION_RAISED",
+        "UNIT_DISPOSED",
+        "DISPOSITION_CONFLICT"
       ]
     },
     "aggregate_type": {
       "type": "string",
       "enum": [
+        "producer",
         "helmet_model",
         "certification_record",
+        "test_sample",
         "product_lot",
-        "recall_campaign"
+        "marketing_material",
+        "shop",
+        "sale_receipt",
+        "return_receipt",
+        "message",
+        "recall_campaign",
+        "unit"
       ]
     },
     "aggregate_id": {
@@ -52,17 +82,104 @@
     }
   },
   "payload_required_by_event": {
+    "PRODUCER_REGISTERED": [
+      "name"
+    ],
+    "CERTIFICATE_SUBMITTED": [
+      "certificate_ref",
+      "valid_until"
+    ],
     "CERTIFICATE_VERIFIED": [
       "certificate_ref",
       "valid_until"
+    ],
+    "CERTIFICATE_EXPIRED": [
+      "certificate_ref"
+    ],
+    "TEST_RESULT_RECORDED": [
+      "sample_ref",
+      "conclusion"
+    ],
+    "LOT_REGISTERED": [
+      "model_ref",
+      "quantity"
+    ],
+    "LOT_SPLIT": [
+      "source_lot",
+      "parts"
+    ],
+    "LOT_MERGED": [
+      "target_lot",
+      "source_lots"
+    ],
+    "MATERIAL_SUBMITTED": [
+      "material_ref",
+      "kind"
+    ],
+    "SHOP_LINKED": [
+      "platform_ref",
+      "name"
+    ],
+    "INVENTORY_MOVED": [
+      "serials",
+      "to_location"
+    ],
+    "SALE_RECORDED": [
+      "message_id",
+      "serials"
+    ],
+    "RETURN_RECORDED": [
+      "message_id",
+      "serials"
+    ],
+    "MESSAGE_QUARANTINED": [
+      "message_id",
+      "reason"
+    ],
+    "RISK_ASSESSED": [
+      "level",
+      "reason"
     ],
     "LOT_FROZEN": [
       "affected_units",
       "risk_reason"
     ],
+    "LOT_UNFROZEN": [
+      "approved_by"
+    ],
+    "RECALL_LAUNCHED": [
+      "lots",
+      "measures"
+    ],
+    "CAMPAIGN_APPROVED": [
+      "approved_by"
+    ],
+    "STOP_SALE_ENFORCED": [
+      "held_units"
+    ],
+    "SCOPE_ADJUSTED": [
+      "added",
+      "removed"
+    ],
+    "NOTIFICATION_SENT": [
+      "consumer_ref",
+      "channel"
+    ],
+    "CONSUMER_RESPONDED": [
+      "unit_ref",
+      "choice"
+    ],
+    "ESCALATION_RAISED": [
+      "stage"
+    ],
     "UNIT_DISPOSED": [
       "unit_ref",
       "disposition"
+    ],
+    "DISPOSITION_CONFLICT": [
+      "unit_ref",
+      "attempted",
+      "existing"
     ]
   },
   "additionalProperties": false
