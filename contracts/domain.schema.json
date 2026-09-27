@@ -20,10 +20,29 @@
       "type": "string",
       "enum": [
         "MODEL_REGISTERED",
+        "MODEL_LISTING_PUBLISHED",
+        "LISTING_DELISTED",
         "CERTIFICATE_VERIFIED",
+        "CERTIFICATE_REVOKED",
         "TEST_RESULT_RECORDED",
+        "TEST_RESULT_CORRECTED",
+        "LOT_CREATED",
+        "LOT_SPLIT",
+        "LOT_MERGED",
         "LOT_FROZEN",
-        "UNIT_DISPOSED"
+        "LOT_RELEASED",
+        "MERCHANT_MATERIAL_SUBMITTED",
+        "STOCK_MOVED",
+        "UNIT_SOLD",
+        "RECALL_OPENED",
+        "RECALL_SCOPE_ADJUSTED",
+        "RECALL_CLOSED",
+        "RECALL_NOTICE_SENT",
+        "CONSUMER_RESPONDED",
+        "RECALL_ESCALATED",
+        "UNIT_DISPOSAL_REQUESTED",
+        "UNIT_DISPOSED",
+        "DISPOSITION_REJECTED"
       ]
     },
     "aggregate_type": {
@@ -56,13 +75,100 @@
       "certificate_ref",
       "valid_until"
     ],
+    "CERTIFICATE_REVOKED": [
+      "certificate_ref",
+      "reason"
+    ],
+    "TEST_RESULT_RECORDED": [
+      "sample_ref",
+      "conclusion"
+    ],
+    "TEST_RESULT_CORRECTED": [
+      "test_event_id",
+      "conclusion"
+    ],
+    "LOT_CREATED": [
+      "lot_ref",
+      "producer_ref",
+      "model_ref"
+    ],
+    "LOT_SPLIT": [
+      "parent_lot_ref",
+      "child_lot_refs",
+      "quantities",
+      "unit_assignments"
+    ],
+    "LOT_MERGED": [
+      "parent_lot_refs",
+      "child_lot_ref",
+      "quantity"
+    ],
     "LOT_FROZEN": [
       "affected_units",
       "risk_reason"
     ],
-    "UNIT_DISPOSED": [
+    "LOT_RELEASED": [
+      "reason"
+    ],
+    "MERCHANT_MATERIAL_SUBMITTED": [
+      "material_ref",
+      "shop_ref"
+    ],
+    "STOCK_MOVED": [
+      "lot_ref",
+      "unit_refs",
+      "from_location",
+      "to_location"
+    ],
+    "UNIT_SOLD": [
+      "lot_ref",
+      "unit_refs",
+      "sales_receipt_ref",
+      "channel",
+      "shop_ref"
+    ],
+    "RECALL_OPENED": [
+      "lot_refs",
+      "risk_level",
+      "basis",
+      "approved_by",
+      "unsold_control"
+    ],
+    "RECALL_SCOPE_ADJUSTED": [
+      "lot_refs",
+      "reason"
+    ],
+    "RECALL_CLOSED": [
+      "reason"
+    ],
+    "RECALL_NOTICE_SENT": [
+      "notice_ref",
+      "channel",
+      "sales_receipt_refs"
+    ],
+    "CONSUMER_RESPONDED": [
+      "notice_ref",
+      "unit_ref",
+      "choice"
+    ],
+    "RECALL_ESCALATED": [
+      "from_level",
+      "to_level",
+      "reason"
+    ],
+    "UNIT_DISPOSAL_REQUESTED": [
       "unit_ref",
       "disposition"
+    ],
+    "UNIT_DISPOSED": [
+      "unit_ref",
+      "disposition",
+      "request_ref"
+    ],
+    "DISPOSITION_REJECTED": [
+      "request_ref",
+      "unit_ref",
+      "reason"
     ]
   },
   "additionalProperties": false
